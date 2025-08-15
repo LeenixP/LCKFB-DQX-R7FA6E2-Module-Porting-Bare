@@ -37,7 +37,7 @@ const spi_extended_cfg_t g_spi0_ext_cfg = { .spi_clksyn = SPI_SSL_MODE_CLK_SYN,
 				SPI_MOSI_IDLE_VALUE_FIXING_DISABLE, .parity =
 				SPI_PARITY_MODE_DISABLE, .byte_swap = SPI_BYTE_SWAP_DISABLE,
 		.spck_div = {
-		/* Actual calculated bitrate: 12500000. */.spbr = 3, .brdv = 0 },
+		/* Actual calculated bitrate: 25000000. */.spbr = 1, .brdv = 0 },
 		.spck_delay = SPI_DELAY_COUNT_1,
 		.ssl_negation_delay = SPI_DELAY_COUNT_1, .next_access_delay =
 				SPI_DELAY_COUNT_1 };
@@ -66,7 +66,7 @@ const spi_cfg_t g_spi0_cfg = { .channel = 0,
 		.eri_irq = FSP_INVALID_VECTOR,
 #endif
 
-		.rxi_ipl = (12), .txi_ipl = (12), .tei_ipl = (12), .eri_ipl = (12),
+		.rxi_ipl = (10), .txi_ipl = (10), .tei_ipl = (10), .eri_ipl = (10),
 
 		.operating_mode = SPI_MODE_MASTER,
 

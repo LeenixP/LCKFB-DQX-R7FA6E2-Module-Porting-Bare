@@ -1,6 +1,5 @@
 #include "lcd_init.h"
 
-
 static volatile bool g_transfer_complete = false;
 void spi0_callback(spi_callback_args_t *arg)
 {
@@ -9,6 +8,7 @@ void spi0_callback(spi_callback_args_t *arg)
         g_transfer_complete = true;
 }
 
+
 /******************************************************************************
       函数说明：LCD串行数据写入函数
       入口数据：dat  要写入的串行数据
@@ -16,7 +16,6 @@ void spi0_callback(spi_callback_args_t *arg)
 ******************************************************************************/
 void LCD_Writ_Bus(u8 dat)
 {
-    uint8_t recv_data = 0;
 	fsp_err_t err = FSP_SUCCESS;
 	volatile uint32_t wTimeout = 10000; // 10ms
 
@@ -35,21 +34,10 @@ void LCD_Writ_Bus(u8 dat)
 	}
 
 	/* 等待发送成功 */
-	while (false == g_transfer_complete)
-	{
-		if (wTimeout-- == 0)
-		{
-			g_transfer_complete = false; // 重置标志位
-			printf("\r\nSPI发送超时\r\n");
-			return;
-		}
-		delay_us(1);
-	}
+	while (false == g_transfer_complete);
 	g_transfer_complete = false; // 重置标志位
 
     LCD_CS_Set();
-
-	return recv_data;
 }
 
 
@@ -71,8 +59,10 @@ void LCD_WR_DATA8(u8 dat)
 ******************************************************************************/
 void LCD_WR_DATA(u16 dat)
 {
+	LCD_DC_Set();//写数据
 	LCD_Writ_Bus(dat>>8);
 	LCD_Writ_Bus(dat);
+	LCD_DC_Set();//写数据
 }
 
 
@@ -147,6 +137,13 @@ void LCD_Init(void)
         printf("\r\nSPI启动错误\r\n");
     }
 	
+	// 初始化GPIO
+	LCD_RES_Set();
+	LCD_DC_Set();
+	LCD_CS_Set();
+	LCD_BLK_Set();
+	delay_ms(100);
+
 	LCD_RES_Clr();//复位
 	delay_ms(100);
 	LCD_RES_Set();

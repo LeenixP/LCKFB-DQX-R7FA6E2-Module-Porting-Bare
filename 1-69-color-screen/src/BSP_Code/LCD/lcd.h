@@ -1,31 +1,19 @@
 #ifndef __LCD_H
 #define __LCD_H		
 #include "hal_data.h"
-
-#ifndef delay_ms
-#define delay_ms(x)   R_BSP_SoftwareDelay(x, BSP_DELAY_UNITS_MILLISECONDS)
-#endif
-#ifndef delay_1ms
-#define delay_1ms(x)  R_BSP_SoftwareDelay(x, BSP_DELAY_UNITS_MILLISECONDS)
-#endif
-#ifndef delay_us
-#define delay_us(x)   R_BSP_SoftwareDelay(x, BSP_DELAY_UNITS_MICROSECONDS)
-#endif
-#ifndef delay_1us
-#define delay_1us(x)  R_BSP_SoftwareDelay(x, BSP_DELAY_UNITS_MICROSECONDS)
-#endif
-
+#include <stdio.h>
 
 #ifndef u8
-#define u8  uint8_t
+#define u8 uint8_t
 #endif
+
 #ifndef u16
 #define u16 uint16_t
 #endif
+
 #ifndef u32
 #define u32 uint32_t
 #endif
-
 
 void LCD_Fill(u16 xsta,u16 ysta,u16 xend,u16 yend,u16 color);//指定区域填充颜色
 void LCD_DrawPoint(u16 x,u16 y,u16 color);//在指定位置画一个点

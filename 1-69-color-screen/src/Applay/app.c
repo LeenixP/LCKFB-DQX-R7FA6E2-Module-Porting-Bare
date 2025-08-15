@@ -70,6 +70,8 @@ void Run(void)
 
     LCD_Init();//LCD初始化
 
+    delay_1ms(1000);
+
     printf("LCD_W:%d\r\n", LCD_W);
     printf("LCD_H:%d\r\n", LCD_H);
 
@@ -98,7 +100,7 @@ void Run(void)
 		t+=0.11;
 		LCD_ShowPicture(160,95,40,40,gImage_1);
 
-        led_blink(); // delay 1s
+        led_blink();
     }
 }
 

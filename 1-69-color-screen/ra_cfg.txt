@@ -203,10 +203,10 @@ FSP Configuration
     Instance "g_spi0 SPI (r_spi)"
       Name: g_spi0
       Channel: 0
-      Receive Interrupt Priority: Priority 12
-      Transmit Buffer Empty Interrupt Priority: Priority 12
-      Transfer Complete Interrupt Priority: Priority 12
-      Error Interrupt Priority: Priority 12
+      Receive Interrupt Priority: Priority 10
+      Transmit Buffer Empty Interrupt Priority: Priority 10
+      Transfer Complete Interrupt Priority: Priority 10
+      Error Interrupt Priority: Priority 10
       Operating Mode: Master
       Clock Phase: Data sampling on odd edge, data variation on even edge
       Clock Polarity: Low when idle
@@ -220,7 +220,7 @@ FSP Configuration
       MOSI Idle State: MOSI Idle Value Fixing Disable
       Parity Mode: Disabled
       Byte Swapping: Disable
-      Bitrate: 16000000
+      Bitrate: 40000000
       Clock Delay: 1 Clock
       SSL Negation Delay: 1 Clock
       Next Access Delay: 1 Clock

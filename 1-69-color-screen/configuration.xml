@@ -228,10 +228,10 @@
     <module id="module.driver.spi_on_spi.1249366887">
       <property id="module.driver.spi.name" value="g_spi0"/>
       <property id="module.driver.spi.channel" value="0"/>
-      <property id="module.driver.spi.rxi_ipl" value="board.icu.common.irq.priority12"/>
-      <property id="module.driver.spi.txi_ipl" value="board.icu.common.irq.priority12"/>
-      <property id="module.driver.spi.tei_ipl" value="board.icu.common.irq.priority12"/>
-      <property id="module.driver.spi.eri_ipl" value="board.icu.common.irq.priority12"/>
+      <property id="module.driver.spi.rxi_ipl" value="board.icu.common.irq.priority10"/>
+      <property id="module.driver.spi.txi_ipl" value="board.icu.common.irq.priority10"/>
+      <property id="module.driver.spi.tei_ipl" value="board.icu.common.irq.priority10"/>
+      <property id="module.driver.spi.eri_ipl" value="board.icu.common.irq.priority10"/>
       <property id="module.driver.spi.operating_mode" value="module.driver.spi.operating_mode.mode_master"/>
       <property id="module.driver.spi.clk_phase" value="module.driver.spi.clk_phase.clk_phase_edge_odd"/>
       <property id="module.driver.spi.clk_polarity" value="module.driver.spi.clk_polarity.clk_polarity_low"/>
@@ -245,7 +245,7 @@
       <property id="module.driver.spi.mosi_idle_value_fixing" value="module.driver.spi.mosi_idle_value_fixing.disable"/>
       <property id="module.driver.spi.parity" value="module.driver.spi.parity_mode.disable"/>
       <property id="module.driver.spi.byte_swap" value="module.driver.spi.byte_swap.disable"/>
-      <property id="module.driver.spi.bitrate" value="16000000"/>
+      <property id="module.driver.spi.bitrate" value="40000000"/>
       <property id="module.driver.spi.spck_delay" value="module.driver.spi.spck_delay.one"/>
       <property id="module.driver.spi.ssl_negation_delay" value="module.driver.spi.ssl_negation_delay.one"/>
       <property id="module.driver.spi.next_access_delay" value="module.driver.spi.next_access_delay.one"/>

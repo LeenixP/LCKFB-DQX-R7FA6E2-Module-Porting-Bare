@@ -30,7 +30,6 @@
 #define delay_1us(x)  R_BSP_SoftwareDelay(x, BSP_DELAY_UNITS_MICROSECONDS)
 #endif
 
-
 #ifndef u8
 #define u8  uint8_t
 #endif
@@ -48,19 +47,17 @@
 #define LCD_BLK_PIN     BSP_IO_PORT_04_PIN_09
 
 /* LCD信号控制宏定义 */
-#define LCD_RES_Clr()  R_IOPORT_PinWrite(&g_ioport_ctrl, LCD_RES_PIN, 0)//RES
-#define LCD_RES_Set()  R_IOPORT_PinWrite(&g_ioport_ctrl, LCD_RES_PIN, 1)
+#define LCD_RES_Clr()  R_IOPORT_PinWrite(&g_ioport_ctrl,LCD_RES_PIN, 0)//RES
+#define LCD_RES_Set()  R_IOPORT_PinWrite(&g_ioport_ctrl,LCD_RES_PIN, 1)
 
-#define LCD_DC_Clr()   R_IOPORT_PinWrite(&g_ioport_ctrl, LCD_DC_PIN, 0)//DC
-#define LCD_DC_Set()   R_IOPORT_PinWrite(&g_ioport_ctrl, LCD_DC_PIN, 1)
+#define LCD_DC_Clr()   R_IOPORT_PinWrite(&g_ioport_ctrl,LCD_DC_PIN, 0)//DC
+#define LCD_DC_Set()   R_IOPORT_PinWrite(&g_ioport_ctrl,LCD_DC_PIN, 1)
 
-#define LCD_CS_Clr()   R_IOPORT_PinWrite(&g_ioport_ctrl, LCD_CS_PIN, 0)//CS
-#define LCD_CS_Set()   R_IOPORT_PinWrite(&g_ioport_ctrl, LCD_CS_PIN, 1)
+#define LCD_CS_Clr()   R_IOPORT_PinWrite(&g_ioport_ctrl,LCD_CS_PIN, 0)//CS
+#define LCD_CS_Set()   R_IOPORT_PinWrite(&g_ioport_ctrl,LCD_CS_PIN, 1)
 
-#define LCD_BLK_Clr()  R_IOPORT_PinWrite(&g_ioport_ctrl, LCD_BLK_PIN, 0)//BLK
-#define LCD_BLK_Set()  R_IOPORT_PinWrite(&g_ioport_ctrl, LCD_BLK_PIN, 1)
-
-
+#define LCD_BLK_Clr()  R_IOPORT_PinWrite(&g_ioport_ctrl,LCD_BLK_PIN, 0)//BLK
+#define LCD_BLK_Set()  R_IOPORT_PinWrite(&g_ioport_ctrl,LCD_BLK_PIN, 1)
 
 void LCD_GPIO_Init(void);//初始化GPIO
 void LCD_Writ_Bus(u8 dat);//模拟SPI时序
