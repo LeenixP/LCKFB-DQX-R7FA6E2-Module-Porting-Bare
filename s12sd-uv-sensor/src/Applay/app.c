@@ -65,7 +65,7 @@ void Run(void)
     /* initialize the S12SD UV sensor pin */
     S12SD_UV_GPIO_Init();
     printf("\r\nS12SD UV Sensor Test\r\n");
-    printf("ADC Channel 8 (PB0) is used to detect UV intensity\r\n");
+    printf("ADC Channel 0 (P000) is used to detect UV intensity\r\n");
 
     while(1)
     {
