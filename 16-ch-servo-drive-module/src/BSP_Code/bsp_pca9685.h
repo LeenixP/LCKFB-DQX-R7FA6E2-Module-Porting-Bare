@@ -1,0 +1,93 @@
+/*
+ * 立创开发板软硬件资料与相关扩展板软硬件资料官网全部开源
+ * 开发板官网：www.lckfb.com
+ * 文档网站：wiki.lckfb.com
+ * 技术支持常驻论坛，任何技术问题欢迎随时交流学习
+ * 嘉立创社区问答：https://www.jlc-bbs.com/lckfb
+ * 关注bilibili账号：【立创开发板】，掌握我们的最新动态！
+ * 不靠卖板赚钱，以培养中国工程师为己任
+ */
+
+#ifndef __BSP_PCA9685_H__
+#define __BSP_PCA9685_H__
+
+#include "hal_data.h"
+#include <stdio.h>
+
+#ifndef u8
+#define u8 uint8_t
+#endif
+#ifndef u16
+#define u16 uint16_t
+#endif
+#ifndef u32
+#define u32 uint32_t
+#endif
+
+#ifndef delay_ms
+#define delay_ms(x)   R_BSP_SoftwareDelay(x, BSP_DELAY_UNITS_MILLISECONDS)
+#endif
+#ifndef delay_1ms
+#define delay_1ms(x)  R_BSP_SoftwareDelay(x, BSP_DELAY_UNITS_MILLISECONDS)
+#endif
+#ifndef delay_us
+#define delay_us(x)   R_BSP_SoftwareDelay(x, BSP_DELAY_UNITS_MICROSECONDS)
+#endif
+#ifndef delay_1us
+#define delay_1us(x)  R_BSP_SoftwareDelay(x, BSP_DELAY_UNITS_MICROSECONDS)
+#endif
+
+
+#define Module_SCL_PIN   BSP_IO_PORT_04_PIN_08 // SCL
+#define Module_SDA_PIN   BSP_IO_PORT_04_PIN_09 // SDA
+
+//SDA输入模式
+#define SDA_IN() { \
+    fsp_err_t err = R_IOPORT_PinCfg(&g_ioport_ctrl, Module_SDA_PIN, \
+                    (uint32_t) IOPORT_CFG_PORT_DIRECTION_INPUT); \
+    if(err != FSP_SUCCESS) { \
+        printf("GPIO Mode Set INPUT Failed!!\r\n"); \
+    } \
+}
+
+//SDA输出模式
+#define SDA_OUT() { \
+    fsp_err_t err = R_IOPORT_PinCfg(&g_ioport_ctrl, Module_SDA_PIN, \
+            ((uint32_t) IOPORT_CFG_DRIVE_HIGH \
+		| (uint32_t) IOPORT_CFG_NMOS_ENABLE \
+		| (uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT \
+		| (uint32_t) IOPORT_CFG_PORT_OUTPUT_HIGH)); \
+    if(err != FSP_SUCCESS) { \
+        printf("GPIO Mode Set OUTPUT Failed!!\r\n"); \
+    } \
+}
+
+// SCL引脚和SDA引脚的输出
+#define SCL(BIT)    R_IOPORT_PinWrite(&g_ioport_ctrl, Module_SCL_PIN, BIT)
+#define SDA(BIT)    R_IOPORT_PinWrite(&g_ioport_ctrl, Module_SDA_PIN, BIT)
+
+// 获取SDA引脚的电平状态
+static inline bsp_io_level_t SDA_GET(void) {
+    bsp_io_level_t p_pin_value;
+    fsp_err_t err = R_IOPORT_PinRead(&g_ioport_ctrl, Module_SDA_PIN, &p_pin_value);
+    if(err != FSP_SUCCESS) {
+        printf("GPIO Input Read Failed!!\r\n");
+    }
+    return p_pin_value;
+}
+
+#define PCA_Addr              0x80        //IIC地址
+#define PCA_Model             0x00
+#define LED0_ON_L             0x06
+#define LED0_ON_H             0x07
+#define LED0_OFF_L            0x08
+#define LED0_OFF_H            0x09
+#define PCA_Pre               0xFE        //配置频率地址
+
+void PCA9685_Init(float hz,uint8_t angle);
+void setAngle(uint8_t num,uint8_t angle);
+void PCA9685_setFreq(float freq);
+void PCA9685_setPWM(uint8_t num,uint32_t on,uint32_t off);
+
+#endif
+
